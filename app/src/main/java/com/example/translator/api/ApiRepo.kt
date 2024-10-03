@@ -15,7 +15,7 @@ class ApiRepo(private val api: Api) {
         api.getApi(word).enqueue(object : Callback<TranslatorData> {
             override fun onFailure(call: Call<TranslatorData>, t: Throwable) {
                 t.localizedMessage.let {
-                    translatorData.value = NetworkResult.Error(it)
+                    translatorData.value = NetworkResult.Error(it?: "API call failed")
                 }
                 Log.d("ApiRepo", "Error: ${t.localizedMessage}")
                 t.printStackTrace()
