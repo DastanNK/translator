@@ -10,7 +10,7 @@ import retrofit2.Callback
 class ApiRepo(private val api: Api) {
     var translatorData = MutableStateFlow<NetworkResult<TranslatorData>>(NetworkResult.Initial())
 
-    
+
     fun onTranslate(word:String){
         Log.d("ApiRepo", "onTranslate called with word: $word")
         translatorData.value=NetworkResult.Loading()
